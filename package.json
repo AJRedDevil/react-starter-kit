@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback --env.PLATFORM=local --env.VERSION=stag",
     "prebuild": "webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag --progress",
-    "build": "node server"
+    "build": "node server",
+    "prettier": "prettier --write src/**/*.js"
   },
   "repository": "git@gitlab.com:AJRedDevil/react-starter-kit.git",
   "author": "Ajan Lal Shrestha <ajan.shresh@gmail.com>",
@@ -27,6 +28,7 @@
     "mini-css-extract-plugin": "0.5.0",
     "node-sass": "4.11.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
+    "prettier": "1.15.3",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
     "uglifyjs-webpack-plugin": "2.0.1",
