@@ -7,7 +7,20 @@
     "start": "webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback --env.PLATFORM=local --env.VERSION=stag",
     "prebuild": "webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag --progress",
     "build": "node server",
+    "lint": "eslint --debug src/",
+    "lint:write": "eslint --debug src/ --fix",
     "prettier": "prettier --write src/**/*.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(js|jsx)": [
+      "npm run lint:write",
+      "git add"
+    ]
   },
   "repository": "git@gitlab.com:AJRedDevil/react-starter-kit.git",
   "author": "Ajan Lal Shrestha <ajan.shresh@gmail.com>",
@@ -21,10 +34,22 @@
     "@babel/polyfill": "7.0.0",
     "@babel/preset-env": "7.2.0",
     "@babel/preset-react": "7.0.0",
+    "babel-eslint": "10.0.1",
     "babel-loader": "8.0.4",
     "copy-webpack-plugin": "4.6.0",
     "css-loader": "2.0.0",
+    "eslint": "5.10.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-jest-enzyme": "7.0.1",
+    "eslint-plugin-babel": "5.3.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jest": "22.1.2",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-react": "7.11.1",
     "html-webpack-plugin": "3.2.0",
+    "husky": "1.2.1",
+    "lint-staged": "8.1.0",
     "mini-css-extract-plugin": "0.5.0",
     "node-sass": "4.11.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
