@@ -6,10 +6,16 @@ import './myStyles.scss';
 class App extends React.Component {
     state = {
       CaptainKirkBio: {},
+      Foo: null, // Foo is out component
     }
 
     componentDidMount = () => {
       this.onGetKirkBio();
+      import( /* webpackChunkName: 'Foo' */ './Foo').then(Foo => {
+        this.setState({
+          Foo: Foo.default
+        });
+      })
     }
 
     onGetKirkBio = async () => {
@@ -36,7 +42,8 @@ class App extends React.Component {
 
     render() {
       const {
-        CaptainKirkBio
+        CaptainKirkBio,
+        Foo
       } = this.state;
       return ( < div className = "app" >
         <
@@ -57,8 +64,9 @@ class App extends React.Component {
             } > {
               JSON.stringify(CaptainKirkBio)
             } < /p>)
-          } < /section> < /
-          div >
+          } < /section> {
+          Foo ? < Foo / > : < p > Foo is loading < /p>} < /
+            div >
         );
       }
     }
